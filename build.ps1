@@ -41,7 +41,7 @@ function build([string[]]$params) {
     # -------------------------------------------------------------------------
     # Main Build Script
     # -------------------------------------------------------------------------
-    message "Now building $PROJ_NaME"
+    message "Now building $PROJ_NAME"
 
     message "Setting up the docs directory"
     Remove-Item -Path "coverage" -Force -Recurse -ErrorAction Ignore
@@ -65,6 +65,6 @@ function build([string[]]$params) {
     dart doc --output "docs"
     Move-Item -Path coverage -Destination "docs" -Force
 
-    message "codemelted flutter module built"
+    message "$PROJ_NAME build completed."
 }
 build $args
