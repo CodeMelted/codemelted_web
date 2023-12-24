@@ -65,6 +65,14 @@ function build([string[]]$params) {
     dart doc --output "docs"
     Move-Item -Path coverage -Destination "docs" -Force
 
+    # Fix the title
+    [string]$htmlData = Get-Content -Path "docs/index.html"
+    $htmlData = $htmlData.Replace("codemelted_web - Dart API docs", "CodeMelted Web Module")
+    $htmlData | Out-File docs/index.html -Force
+
+    # Put the right icon
+    Copy-Item -Path assets/images/favicon.png -Destination docs/static-assets -Force
+
     message "$PROJ_NAME build completed."
 }
 build $args
