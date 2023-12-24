@@ -16,7 +16,7 @@
 
 <h1> <img style="height: 35px;" src="https://developer.codemelted.com/assets/images/icons/flutter.png" /> CodeMelted Web Module </h1>
 
-INTRODUCTION
+Welcome to the **CodeMelted Web Module** project. This project aims to provide a developer with the ability to build a rich Progressive Web Application (PWA) bypassing app stores. It will utilize flutter as the SDK language. This provides a rich widget set to build Single Page Applications (SPA). It also provides full access to the <a href='https://developer.mozilla.org/en-US/docs/Web/API' target='_blank'>Browser Web APIs</a>. This combined with the Flutter SDK will allows developers to build powerful applications in less time then other web based frameworks.
 
 **Table of Contents**
 
