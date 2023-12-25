@@ -1,6 +1,6 @@
 00:00 +0: loading C:/Users/DarkT/Documents/GitHub/codemelted.github.io/codemelted_web/test/codemelted_web_test.dart
 00:00 +0: codemelted.logger() Tests codemelted.logger() Error Demo
-2023-12-24 23:45:57.266 codemelted.logger: unsupported action 'duh' specified.
+2023-12-25 13:29:08.014 codemelted.logger: unsupported action 'duh' specified.
 dart-sdk/lib/_internal/js_dev_runtime/private/ddc_runtime/errors.dart 294:3  throw_
 packages/codemelted_web/codemelted_web.dart.js 230:21                        logger
 codemelted_web_test.dart.js 31:35                                            <fn>
@@ -27,7 +27,7 @@ dart-sdk/lib/_internal/js_dev_runtime/patch/async_patch.dart 181:7           <fn
 
 00:00 +1: codemelted.logger() Tests codemelted.logger() Success Demo
 00:00 +1: codemelted.logger() Tests codemelted.logger() Error Demo
-2023-12-24 23:45:57.355 warning
+2023-12-25 13:29:08.103 warning
 dart-sdk/lib/_internal/js_dev_runtime/patch/core_patch.dart 941:28  get current
 codemelted_web_test.dart.js 45:103                                  <fn>
 packages/test_api/src/backend/declarer.dart.js 258:56               <fn>
@@ -51,7 +51,7 @@ dart-sdk/lib/async/schedule_microtask.dart 40:11                    _microtaskLo
 dart-sdk/lib/async/schedule_microtask.dart 49:5                     _startMicrotaskLoop
 dart-sdk/lib/_internal/js_dev_runtime/patch/async_patch.dart 181:7  <fn>
 
-2023-12-24 23:45:57.358 error
+2023-12-25 13:29:08.106 error
 dart-sdk/lib/_internal/js_dev_runtime/patch/core_patch.dart 941:28  get current
 codemelted_web_test.dart.js 46:99                                   <fn>
 packages/test_api/src/backend/declarer.dart.js 258:56               <fn>
@@ -75,7 +75,7 @@ dart-sdk/lib/async/schedule_microtask.dart 40:11                    _microtaskLo
 dart-sdk/lib/async/schedule_microtask.dart 49:5                     _startMicrotaskLoop
 dart-sdk/lib/_internal/js_dev_runtime/patch/async_patch.dart 181:7  <fn>
 
-2023-12-24 23:45:57.360 debug
+2023-12-25 13:29:08.108 debug
 dart-sdk/lib/_internal/js_dev_runtime/patch/core_patch.dart 941:28  get current
 codemelted_web_test.dart.js 50:99                                   <fn>
 packages/test_api/src/backend/declarer.dart.js 258:56               <fn>
@@ -99,7 +99,7 @@ dart-sdk/lib/async/schedule_microtask.dart 40:11                    _microtaskLo
 dart-sdk/lib/async/schedule_microtask.dart 49:5                     _startMicrotaskLoop
 dart-sdk/lib/_internal/js_dev_runtime/patch/async_patch.dart 181:7  <fn>
 
-2023-12-24 23:45:57.362 info
+2023-12-25 13:29:08.110 info
 dart-sdk/lib/_internal/js_dev_runtime/patch/core_patch.dart 941:28  get current
 codemelted_web_test.dart.js 51:97                                   <fn>
 packages/test_api/src/backend/declarer.dart.js 258:56               <fn>
@@ -123,7 +123,7 @@ dart-sdk/lib/async/schedule_microtask.dart 40:11                    _microtaskLo
 dart-sdk/lib/async/schedule_microtask.dart 49:5                     _startMicrotaskLoop
 dart-sdk/lib/_internal/js_dev_runtime/patch/async_patch.dart 181:7  <fn>
 
-2023-12-24 23:45:57.363 warning
+2023-12-25 13:29:08.111 warning
 dart-sdk/lib/_internal/js_dev_runtime/patch/core_patch.dart 941:28  get current
 codemelted_web_test.dart.js 52:103                                  <fn>
 packages/test_api/src/backend/declarer.dart.js 258:56               <fn>
@@ -147,7 +147,7 @@ dart-sdk/lib/async/schedule_microtask.dart 40:11                    _microtaskLo
 dart-sdk/lib/async/schedule_microtask.dart 49:5                     _startMicrotaskLoop
 dart-sdk/lib/_internal/js_dev_runtime/patch/async_patch.dart 181:7  <fn>
 
-2023-12-24 23:45:57.364 error
+2023-12-25 13:29:08.113 error
 dart-sdk/lib/_internal/js_dev_runtime/patch/core_patch.dart 941:28  get current
 codemelted_web_test.dart.js 53:99                                   <fn>
 packages/test_api/src/backend/declarer.dart.js 258:56               <fn>
