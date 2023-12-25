@@ -1,0 +1,174 @@
+00:00 +0: loading C:/Users/DarkT/Documents/GitHub/codemelted.github.io/codemelted_web/test/codemelted_web_test.dart
+00:00 +0: codemelted.logger() Tests codemelted.logger() Error Demo
+2023-12-24 23:35:58.577 codemelted.logger: unsupported action 'duh' specified.
+dart-sdk/lib/_internal/js_dev_runtime/private/ddc_runtime/errors.dart 294:3  throw_
+packages/codemelted_web/codemelted_web.dart.js 230:21                        logger
+codemelted_web_test.dart.js 31:35                                            <fn>
+packages/test_api/src/backend/declarer.dart.js 258:56                        <fn>
+dart-sdk/lib/_internal/js_dev_runtime/patch/async_patch.dart 45:50           <fn>
+packages/stack_trace/src/stack_zone_specification.dart.js 187:98             <fn>
+packages/stack_trace/src/stack_zone_specification.dart.js 239:16             [_run]
+packages/stack_trace/src/stack_zone_specification.dart.js 187:80             <fn>
+dart-sdk/lib/async/zone.dart 1407:47                                         _rootRunUnary
+dart-sdk/lib/async/zone.dart 1308:19                                         runUnary
+dart-sdk/lib/async/future_impl.dart 162:18                                   handleValue
+dart-sdk/lib/async/future_impl.dart 846:44                                   handleValueCallback
+dart-sdk/lib/async/future_impl.dart 875:13                                   _propagateToListeners
+dart-sdk/lib/async/future_impl.dart 464:9                                    <fn>
+packages/stack_trace/src/stack_zone_specification.dart.js 239:16             [_run]
+packages/stack_trace/src/stack_zone_specification.dart.js 182:71             <fn>
+dart-sdk/lib/async/zone.dart 1399:13                                         _rootRun
+dart-sdk/lib/async/zone.dart 1301:19                                         run
+dart-sdk/lib/async/zone.dart 1209:7                                          runGuarded
+dart-sdk/lib/async/zone.dart 1249:23                                         callback
+dart-sdk/lib/async/schedule_microtask.dart 40:11                             _microtaskLoop
+dart-sdk/lib/async/schedule_microtask.dart 49:5                              _startMicrotaskLoop
+dart-sdk/lib/_internal/js_dev_runtime/patch/async_patch.dart 181:7           <fn>
+
+00:00 +1: codemelted.logger() Tests codemelted.logger() Success Demo
+00:00 +1: codemelted.logger() Tests codemelted.logger() Error Demo
+2023-12-24 23:35:58.667 warning
+dart-sdk/lib/_internal/js_dev_runtime/patch/core_patch.dart 941:28  get current
+codemelted_web_test.dart.js 45:103                                  <fn>
+packages/test_api/src/backend/declarer.dart.js 258:56               <fn>
+dart-sdk/lib/_internal/js_dev_runtime/patch/async_patch.dart 45:50  <fn>
+packages/stack_trace/src/stack_zone_specification.dart.js 187:98    <fn>
+packages/stack_trace/src/stack_zone_specification.dart.js 239:16    [_run]
+packages/stack_trace/src/stack_zone_specification.dart.js 187:80    <fn>
+dart-sdk/lib/async/zone.dart 1407:47                                _rootRunUnary
+dart-sdk/lib/async/zone.dart 1308:19                                runUnary
+dart-sdk/lib/async/future_impl.dart 162:18                          handleValue
+dart-sdk/lib/async/future_impl.dart 846:44                          handleValueCallback
+dart-sdk/lib/async/future_impl.dart 875:13                          _propagateToListeners
+dart-sdk/lib/async/future_impl.dart 464:9                           <fn>
+packages/stack_trace/src/stack_zone_specification.dart.js 239:16    [_run]
+packages/stack_trace/src/stack_zone_specification.dart.js 182:71    <fn>
+dart-sdk/lib/async/zone.dart 1399:13                                _rootRun
+dart-sdk/lib/async/zone.dart 1301:19                                run
+dart-sdk/lib/async/zone.dart 1209:7                                 runGuarded
+dart-sdk/lib/async/zone.dart 1249:23                                callback
+dart-sdk/lib/async/schedule_microtask.dart 40:11                    _microtaskLoop
+dart-sdk/lib/async/schedule_microtask.dart 49:5                     _startMicrotaskLoop
+dart-sdk/lib/_internal/js_dev_runtime/patch/async_patch.dart 181:7  <fn>
+
+2023-12-24 23:35:58.669 error
+dart-sdk/lib/_internal/js_dev_runtime/patch/core_patch.dart 941:28  get current
+codemelted_web_test.dart.js 46:99                                   <fn>
+packages/test_api/src/backend/declarer.dart.js 258:56               <fn>
+dart-sdk/lib/_internal/js_dev_runtime/patch/async_patch.dart 45:50  <fn>
+packages/stack_trace/src/stack_zone_specification.dart.js 187:98    <fn>
+packages/stack_trace/src/stack_zone_specification.dart.js 239:16    [_run]
+packages/stack_trace/src/stack_zone_specification.dart.js 187:80    <fn>
+dart-sdk/lib/async/zone.dart 1407:47                                _rootRunUnary
+dart-sdk/lib/async/zone.dart 1308:19                                runUnary
+dart-sdk/lib/async/future_impl.dart 162:18                          handleValue
+dart-sdk/lib/async/future_impl.dart 846:44                          handleValueCallback
+dart-sdk/lib/async/future_impl.dart 875:13                          _propagateToListeners
+dart-sdk/lib/async/future_impl.dart 464:9                           <fn>
+packages/stack_trace/src/stack_zone_specification.dart.js 239:16    [_run]
+packages/stack_trace/src/stack_zone_specification.dart.js 182:71    <fn>
+dart-sdk/lib/async/zone.dart 1399:13                                _rootRun
+dart-sdk/lib/async/zone.dart 1301:19                                run
+dart-sdk/lib/async/zone.dart 1209:7                                 runGuarded
+dart-sdk/lib/async/zone.dart 1249:23                                callback
+dart-sdk/lib/async/schedule_microtask.dart 40:11                    _microtaskLoop
+dart-sdk/lib/async/schedule_microtask.dart 49:5                     _startMicrotaskLoop
+dart-sdk/lib/_internal/js_dev_runtime/patch/async_patch.dart 181:7  <fn>
+
+2023-12-24 23:35:58.672 debug
+dart-sdk/lib/_internal/js_dev_runtime/patch/core_patch.dart 941:28  get current
+codemelted_web_test.dart.js 50:99                                   <fn>
+packages/test_api/src/backend/declarer.dart.js 258:56               <fn>
+dart-sdk/lib/_internal/js_dev_runtime/patch/async_patch.dart 45:50  <fn>
+packages/stack_trace/src/stack_zone_specification.dart.js 187:98    <fn>
+packages/stack_trace/src/stack_zone_specification.dart.js 239:16    [_run]
+packages/stack_trace/src/stack_zone_specification.dart.js 187:80    <fn>
+dart-sdk/lib/async/zone.dart 1407:47                                _rootRunUnary
+dart-sdk/lib/async/zone.dart 1308:19                                runUnary
+dart-sdk/lib/async/future_impl.dart 162:18                          handleValue
+dart-sdk/lib/async/future_impl.dart 846:44                          handleValueCallback
+dart-sdk/lib/async/future_impl.dart 875:13                          _propagateToListeners
+dart-sdk/lib/async/future_impl.dart 464:9                           <fn>
+packages/stack_trace/src/stack_zone_specification.dart.js 239:16    [_run]
+packages/stack_trace/src/stack_zone_specification.dart.js 182:71    <fn>
+dart-sdk/lib/async/zone.dart 1399:13                                _rootRun
+dart-sdk/lib/async/zone.dart 1301:19                                run
+dart-sdk/lib/async/zone.dart 1209:7                                 runGuarded
+dart-sdk/lib/async/zone.dart 1249:23                                callback
+dart-sdk/lib/async/schedule_microtask.dart 40:11                    _microtaskLoop
+dart-sdk/lib/async/schedule_microtask.dart 49:5                     _startMicrotaskLoop
+dart-sdk/lib/_internal/js_dev_runtime/patch/async_patch.dart 181:7  <fn>
+
+2023-12-24 23:35:58.673 info
+dart-sdk/lib/_internal/js_dev_runtime/patch/core_patch.dart 941:28  get current
+codemelted_web_test.dart.js 51:97                                   <fn>
+packages/test_api/src/backend/declarer.dart.js 258:56               <fn>
+dart-sdk/lib/_internal/js_dev_runtime/patch/async_patch.dart 45:50  <fn>
+packages/stack_trace/src/stack_zone_specification.dart.js 187:98    <fn>
+packages/stack_trace/src/stack_zone_specification.dart.js 239:16    [_run]
+packages/stack_trace/src/stack_zone_specification.dart.js 187:80    <fn>
+dart-sdk/lib/async/zone.dart 1407:47                                _rootRunUnary
+dart-sdk/lib/async/zone.dart 1308:19                                runUnary
+dart-sdk/lib/async/future_impl.dart 162:18                          handleValue
+dart-sdk/lib/async/future_impl.dart 846:44                          handleValueCallback
+dart-sdk/lib/async/future_impl.dart 875:13                          _propagateToListeners
+dart-sdk/lib/async/future_impl.dart 464:9                           <fn>
+packages/stack_trace/src/stack_zone_specification.dart.js 239:16    [_run]
+packages/stack_trace/src/stack_zone_specification.dart.js 182:71    <fn>
+dart-sdk/lib/async/zone.dart 1399:13                                _rootRun
+dart-sdk/lib/async/zone.dart 1301:19                                run
+dart-sdk/lib/async/zone.dart 1209:7                                 runGuarded
+dart-sdk/lib/async/zone.dart 1249:23                                callback
+dart-sdk/lib/async/schedule_microtask.dart 40:11                    _microtaskLoop
+dart-sdk/lib/async/schedule_microtask.dart 49:5                     _startMicrotaskLoop
+dart-sdk/lib/_internal/js_dev_runtime/patch/async_patch.dart 181:7  <fn>
+
+2023-12-24 23:35:58.675 warning
+dart-sdk/lib/_internal/js_dev_runtime/patch/core_patch.dart 941:28  get current
+codemelted_web_test.dart.js 52:103                                  <fn>
+packages/test_api/src/backend/declarer.dart.js 258:56               <fn>
+dart-sdk/lib/_internal/js_dev_runtime/patch/async_patch.dart 45:50  <fn>
+packages/stack_trace/src/stack_zone_specification.dart.js 187:98    <fn>
+packages/stack_trace/src/stack_zone_specification.dart.js 239:16    [_run]
+packages/stack_trace/src/stack_zone_specification.dart.js 187:80    <fn>
+dart-sdk/lib/async/zone.dart 1407:47                                _rootRunUnary
+dart-sdk/lib/async/zone.dart 1308:19                                runUnary
+dart-sdk/lib/async/future_impl.dart 162:18                          handleValue
+dart-sdk/lib/async/future_impl.dart 846:44                          handleValueCallback
+dart-sdk/lib/async/future_impl.dart 875:13                          _propagateToListeners
+dart-sdk/lib/async/future_impl.dart 464:9                           <fn>
+packages/stack_trace/src/stack_zone_specification.dart.js 239:16    [_run]
+packages/stack_trace/src/stack_zone_specification.dart.js 182:71    <fn>
+dart-sdk/lib/async/zone.dart 1399:13                                _rootRun
+dart-sdk/lib/async/zone.dart 1301:19                                run
+dart-sdk/lib/async/zone.dart 1209:7                                 runGuarded
+dart-sdk/lib/async/zone.dart 1249:23                                callback
+dart-sdk/lib/async/schedule_microtask.dart 40:11                    _microtaskLoop
+dart-sdk/lib/async/schedule_microtask.dart 49:5                     _startMicrotaskLoop
+dart-sdk/lib/_internal/js_dev_runtime/patch/async_patch.dart 181:7  <fn>
+
+2023-12-24 23:35:58.676 error
+dart-sdk/lib/_internal/js_dev_runtime/patch/core_patch.dart 941:28  get current
+codemelted_web_test.dart.js 53:99                                   <fn>
+packages/test_api/src/backend/declarer.dart.js 258:56               <fn>
+dart-sdk/lib/_internal/js_dev_runtime/patch/async_patch.dart 45:50  <fn>
+packages/stack_trace/src/stack_zone_specification.dart.js 187:98    <fn>
+packages/stack_trace/src/stack_zone_specification.dart.js 239:16    [_run]
+packages/stack_trace/src/stack_zone_specification.dart.js 187:80    <fn>
+dart-sdk/lib/async/zone.dart 1407:47                                _rootRunUnary
+dart-sdk/lib/async/zone.dart 1308:19                                runUnary
+dart-sdk/lib/async/future_impl.dart 162:18                          handleValue
+dart-sdk/lib/async/future_impl.dart 846:44                          handleValueCallback
+dart-sdk/lib/async/future_impl.dart 875:13                          _propagateToListeners
+dart-sdk/lib/async/future_impl.dart 464:9                           <fn>
+packages/stack_trace/src/stack_zone_specification.dart.js 239:16    [_run]
+packages/stack_trace/src/stack_zone_specification.dart.js 182:71    <fn>
+dart-sdk/lib/async/zone.dart 1399:13                                _rootRun
+dart-sdk/lib/async/zone.dart 1301:19                                run
+dart-sdk/lib/async/zone.dart 1209:7                                 runGuarded
+dart-sdk/lib/async/zone.dart 1249:23                                callback
+dart-sdk/lib/async/schedule_microtask.dart 40:11                    _microtaskLoop
+dart-sdk/lib/async/schedule_microtask.dart 49:5                     _startMicrotaskLoop
+dart-sdk/lib/_internal/js_dev_runtime/patch/async_patch.dart 181:7  <fn>
+
+00:00 +2: All tests passed!

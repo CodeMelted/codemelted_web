@@ -62,7 +62,7 @@
 
     
 <section class="desc markdown">
-  <p>TBD</p>
+  <p>The implementation of the codemelted_web module project.</p>
 </section>
 
 
@@ -70,12 +70,23 @@
       <h2>Classes</h2>
 
       <dl>
+        <dt id="CLogRecord">
+  <span class="name "><a href="../codemelted_web/CLogRecord-class.html">CLogRecord</a></span> 
+
+</dt>
+<dd>
+  Wrapper object to provide a consistent log record object between module
+sdks.
+</dd>
+
         <dt id="CodeMeltedAPI">
   <span class="name "><a href="../codemelted_web/CodeMeltedAPI-class.html">CodeMeltedAPI</a></span> 
 
 </dt>
 <dd>
-  
+  The main API for the codemelted_web library. It implements the use cases as
+identified by the <a href="https://developer.codemelted.com">https://developer.codemelted.com</a> identifies applicable to
+this module.
 </dd>
 
       </dl>
@@ -94,7 +105,7 @@
 
 </dt>
 <dd>
-  Entry point to access the <a href="../codemelted_web/CodeMeltedAPI-class.html">CodeMeltedAPI</a> utility object.
+  Entry point to access the <a href="../codemelted_web/CodeMeltedAPI-class.html">CodeMeltedAPI</a> as a namespaced utility object.
   <div class="features"><span class="feature">final</span></div>
 
 </dd>
@@ -103,7 +114,43 @@
     </section>
 
 
+    <section class="summary offset-anchor" id="enums">
+      <h2>Enums</h2>
 
+      <dl>
+        <dt id="CLogLevel">
+  <span class="name "><a href="../codemelted_web/CLogLevel.html">CLogLevel</a></span> 
+
+</dt>
+<dd>
+  Identifies the logging level to set with the <a href="../codemelted_web/CodeMeltedAPI/logger.html">CodeMeltedAPI.logger</a>
+"level" action.
+</dd>
+
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="typedefs">
+      <h2>Typedefs</h2>
+
+      <dl>
+          
+  <dt id="CLoggerHandler" class="callable">
+    <span class="name"><a href="../codemelted_web/CLoggerHandler.html">CLoggerHandler</a></span><span class="signature">
+      <span class="returntype parameter">= void Function<span class="signature">(<span class="parameter" id="param-"><span class="type-annotation"><a href="../codemelted_web/CLogRecord-class.html">CLogRecord</a></span></span>)</span></span>
+    </span>
+    
+
+  </dt>
+  <dd>
+    Provides the ability to perform additional processing on logged events
+handled by this module.
+    
+
+  </dd>
+
+      </dl>
+    </section>
 
 
   </div> <!-- /.main-content -->
@@ -139,7 +186,7 @@
 <footer>
   <span class="no-break">
     codemelted_web
-      0.0.0
+      0.2.0
   </span>
 
   

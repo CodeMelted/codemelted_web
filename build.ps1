@@ -27,7 +27,6 @@ function build([string[]]$params) {
     # Constants
     # -------------------------------------------------------------------------
     [string]$PROJ_NAME = "CodeMelted Web Module Build"
-    [string]$GEN_HTML_PERL_SCRIPT = "/ProgramData/chocolatey/lib/lcov/tools/bin/genhtml"
 
     # -------------------------------------------------------------------------
     # Helper Function
@@ -44,29 +43,18 @@ function build([string[]]$params) {
     message "Now building $PROJ_NAME"
 
     message "Setting up the docs directory"
-    Remove-Item -Path "coverage" -Force -Recurse -ErrorAction Ignore
     Remove-Item -Path "docs" -Force -Recurse -ErrorAction Ignore
 
     message "Running flutter test framework"
-    flutter test --coverage
-    if ($IsLinux -or $IsMacOS) {
-        genhtml --no-function-coverage --exclude lib/src --output-directory "coverage" --dark-mode coverage/lcov.info
-    } else {
-        $exists = Test-Path -Path $GEN_HTML_PERL_SCRIPT -PathType Leaf
-        if ($exists) {
-            perl $GEN_HTML_PERL_SCRIPT -o "coverage" coverage/lcov.info
-        } else {
-            Write-Host "WARNING: genhtml not installed for windows. Run " +
-                "'choco install lcov' for pwsh terminal as Admin to install it."
-        }
-    }
+    flutter test --platform=chrome
+    flutter test --platform=chrome > test_results.txt
 
     message "Now generating dart doc"
     dart doc --output "docs"
-    Move-Item -Path coverage -Destination "docs" -Force
+    Move-Item -Path test_results.txt -Destination "docs" -Force
 
     # Fix the title
-    [string]$htmlData = Get-Content -Path "docs/index.html"
+    [string]$htmlData = Get-Content -Path "docs/index.html" -Raw
     $htmlData = $htmlData.Replace("codemelted_web - Dart API docs", "CodeMelted - Web Module")
     $htmlData | Out-File docs/index.html -Force
 
