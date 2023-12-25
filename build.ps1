@@ -56,6 +56,7 @@ function build([string[]]$params) {
     # Fix the title
     [string]$htmlData = Get-Content -Path "docs/index.html" -Raw
     $htmlData = $htmlData.Replace("codemelted_web - Dart API docs", "CodeMelted - Web Module")
+    $htmlData = $htmlData.Replace("https://developer.codemelted.com/codemelted_web/docs", "https://developer.codemelted.com/codemelted_web")
     $htmlData | Out-File docs/index.html -Force
 
     # Put the right icon
