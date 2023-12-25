@@ -86,7 +86,7 @@ codemelted.logger(
 
 ### Change Log
 
-**0.2.0 (Last Modified 2023-12-23):**
+**0.2.0 (Last Modified 2023-12-24):**
 
 - Implemented the logger and error use cases.
 - Fleshed out testing with browser in flutter. No coverage file. Sad.

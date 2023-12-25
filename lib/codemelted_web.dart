@@ -41,7 +41,7 @@ import 'package:logging/logging.dart';
 // ============================================================================
 
 /// Identifies the current version of this module.
-String _version = "X.Y.Z (Last Modified yyyy-mm-dd)";
+String _version = "0.2.0 (Last Modified 2023-12-24)";
 
 // ============================================================================
 // [Logger Use Case Types] ====================================================
