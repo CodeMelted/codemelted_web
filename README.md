@@ -13,6 +13,13 @@
 
 Welcome to the **CodeMelted Web Module** project. This project aims to provide a developer with the ability to build a rich Progressive Web Application (PWA) bypassing app stores. It will utilize flutter as the SDK language. This provides a rich widget set to build Single Page Applications (SPA). It also provides full access to the <a href='https://developer.mozilla.org/en-US/docs/Web/API' target='_blank'>Browser Web APIs</a>. This combined with the Flutter SDK will allows developers to build powerful applications in less time then other web based frameworks.
 
+<center>
+  <a title="Support My Work" href="#">
+  <img id="btnSupport" style="height: 30px;" src="https://developer.codemelted.com/assets/images/icons/bmc-button.png"/>
+  </a>
+  <p>Please support my work if you find this module useful. Thank you.</p>
+</center>
+
 **Table of Contents**
 
 - [Getting started](#getting-started)
