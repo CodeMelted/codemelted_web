@@ -30,9 +30,10 @@ library codemelted_web;
 
 // import 'dart:async';
 // import 'dart:convert';
-// import 'dart:html' as html;
+import 'dart:html' as html;
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:logging/logging.dart';
 
@@ -41,7 +42,26 @@ import 'package:logging/logging.dart';
 // ============================================================================
 
 /// Identifies the current version of this module.
-String _version = "0.2.0 (Last Modified 2023-12-24)";
+String _moduleVersion = "0.2.0 (Last Modified 2023-12-24)";
+
+/// Assists get determining the operating system the progressive web
+/// application is running.
+String _getOSName() {
+  final userAgent = html.window.navigator.userAgent.toLowerCase();
+  if (userAgent.contains("android")) {
+    return "android";
+  } else if (userAgent.contains("ios")) {
+    return "ios";
+  } else if (userAgent.contains("linux")) {
+    return "linux";
+  } else if (userAgent.contains("mac")) {
+    return "macos";
+  } else if (userAgent.contains("windows")) {
+    return "windows";
+  }
+
+  return "unknown";
+}
 
 // ============================================================================
 // [Logger Use Case Types] ====================================================
@@ -166,6 +186,70 @@ class CodeMeltedAPI {
     });
   }
 
+  /// Determines information about the browser / operating system you are
+  /// running. The supported queryable actions include "argument", "browser",
+  /// "eol", "is_desktop", "is_mobile", "module_version", "os", and
+  /// "processors". The data types returned are either string, bool, or number
+  /// types depending on the actionable query. Null is returned if an error
+  /// occurs with the request.
+  dynamic about({required String action, String? name}) {
+    try {
+      _error = null;
+      if (action == "argument") {
+        final urlParams = html.UrlSearchParams();
+        return urlParams.get(name!);
+      } else if (action == "browser") {
+        final userAgent = html.window.navigator.userAgent.toLowerCase();
+        return userAgent.contains("firefox/")
+            ? "firefox"
+            : userAgent.contains("opr/") || userAgent.contains("presto/")
+                ? "opera"
+                : userAgent.contains("mobile/") ||
+                        userAgent.contains("version/")
+                    ? "safari"
+                    : userAgent.contains("edg/")
+                        ? "edge"
+                        : userAgent.contains("chrome/")
+                            ? "chrome"
+                            : "other";
+      } else if (action == "eol") {
+        final osName = _getOSName();
+        return osName == "windows" ? "\r\n" : "\n";
+      } else if (action == "is_desktop") {
+        final osName = _getOSName();
+        return !osName.contains("android") && !osName.contains("ios");
+      } else if (action == "is_mobile") {
+        final osName = _getOSName();
+        return osName.contains("android") || osName.contains("ios");
+      } else if (action == "module_version") {
+        return _moduleVersion;
+      } else if (action == "os") {
+        return _getOSName();
+      } else if (action == "processors") {
+        return html.window.navigator.hardwareConcurrency!;
+      } else {
+        throw "codemelted.about: unsupported $action specified.";
+      }
+    } catch (err, st) {
+      _error = err.toString();
+      logger(action: "log_error", data: err.toString(), st: st);
+      return null;
+    }
+  }
+
+  /// @nodoc
+  int async() {
+    return -1;
+  }
+
+  /// @nodoc
+  int audio() {
+    return -1;
+  }
+
+  /// @nodoc
+  dynamic data() {}
+
   /// Determines the last error if any encountered by the module. One can
   /// determine use case success by checking `codemelted.error() == null`
   String? error() {
@@ -174,7 +258,7 @@ class CodeMeltedAPI {
     return err;
   }
 
-  /// Provides the logger use case so the module can log events as they are
+  /// Provides a logger so the module can log events as they are
   /// encountered. The supported actions are "log_level", "log_handler",
   /// "log_debug", "log_info", "log_warning", and "log_error". The "log_level"
   /// paired with the data parameter as a string can set a corresponding log
@@ -216,6 +300,39 @@ class CodeMeltedAPI {
       logger(action: "log_error", data: err.toString(), st: st);
       _error = err.toString();
     }
+  }
+
+  /// @nodoc
+  List<double> math() {
+    return [0.0];
+  }
+
+  /// @nodoc
+  int network() {
+    return -1;
+  }
+
+  /// @nodoc
+  int peripheral() {
+    return -1;
+  }
+
+  /// @nodoc
+  dynamic runtime() {}
+
+  /// @nodoc
+  int storage() {
+    return -1;
+  }
+
+  /// @nodoc
+  Future<dynamic> task() async {
+    return null;
+  }
+
+  /// @nodoc
+  Widget ui() {
+    return const Text("not implemented yet");
   }
 }
 
