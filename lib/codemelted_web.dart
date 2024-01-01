@@ -1,4 +1,6 @@
-// ignore_for_file: constant_protoIdentifier_names, avoid_web_libraries_in_flutter
+// ignore_for_file: constant_protoIdentifier_names,
+// ignore_for_file: avoid_web_libraries_in_flutter,
+// ignore_for_file: unused_element
 /*
 ===============================================================================
 MIT License
@@ -30,19 +32,134 @@ library codemelted_web;
 
 // import 'dart:async';
 // import 'dart:convert';
+import 'dart:async';
+import 'dart:convert';
 import 'dart:html' as html;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:logging/logging.dart';
+import 'package:http/http.dart' as http;
+
+/// Identifies the current version of this module.
+String _moduleVersion = "0.2.0 (Last Modified 2023-12-24)";
+
+// ============================================================================
+// [Common Types] =============================================================
+// ============================================================================
+
+/// Defines an array definition to match JSON Array construct.
+typedef CArray = List<dynamic>;
+
+/// Provides helper methods for the CArray.
+extension on CArray {
+  /// Converts the JSON object to a string returning null if it cannot
+  String? stringify() => jsonEncode(this);
+}
+
+/// Defines an object definition to match a valid JSON Object construct.
+typedef CObject = Map<String, dynamic>;
+
+/// Provides helper methods for the CObject
+extension on CObject {
+  /// Converts the JSON object to a string returning null if it cannot.
+  String? stringify() => jsonEncode(this);
+}
+
+/// Provides a series of asXXX() conversion from a string data type and do non
+/// case sensitive compares.
+extension on String {
+  /// Will attempt to return an array object ir null if it cannot.
+  CArray? asArray() {
+    try {
+      return jsonDecode(this) as CArray?;
+    } catch (ex) {
+      return null;
+    }
+  }
+
+  /// Will attempt to convert to a bool from a series of strings that can
+  /// represent a true value.
+  bool asBool() {
+    List<String> trueStrings = [
+      "true",
+      "1",
+      "t",
+      "y",
+      "yes",
+      "yeah",
+      "yup",
+      "certainly",
+      "uh-huh"
+    ];
+    return trueStrings.contains(toLowerCase());
+  }
+
+  /// Will attempt to return a int from the string value or null if it cannot.
+  int? asInt() => int.tryParse(this);
+
+  /// Will attempt to return a double from the string value or null if it
+  /// cannot.
+  double? asDouble() => double.tryParse(this);
+
+  /// Will attempt to return Map<String, dynamic> object or null if it cannot.
+  CObject? asObject() {
+    try {
+      return jsonDecode(this) as CObject?;
+    } catch (ex) {
+      return null;
+    }
+  }
+
+  /// Determines if a string is contained within this string.
+  bool containsIgnoreCase(String v) => toLowerCase().contains(v.toLowerCase());
+
+  /// Determines if a string is equal to another ignoring case.
+  bool equalsIgnoreCase(String v) => toLowerCase() == v.toLowerCase();
+}
+
+/// Supports the [CProtocolHandler] object to report data, status, and errors
+/// with a constructed protocol via [CodeMeltedAPI].
+class CProtocolEvent {
+  /// Data specific to the protocol constructed.
+  final dynamic data;
+
+  /// A change in status with the protocol.
+  final String? status;
+
+  /// An encountered error with the protocol.
+  final String? error;
+
+  /// Where the error was detected with the protocol.
+  final StackTrace? st;
+
+  CProtocolEvent({this.data, this.status, this.error, this.st});
+}
+
+/// Handler that is utilized with the [CodeMeltedAPI] when constructing a
+/// protocol to receive [CProtocolEvent] updates.
+typedef CProtocolHandler = void Function(CProtocolEvent);
+
+/// Base class for a constructed protocol.
+abstract class _CProtocol {
+  // Member Fields:
+  final int id;
+  final String protocol;
+  final CProtocolHandler handler;
+
+  _CProtocol(this.id, this.protocol, this.handler);
+
+  /// Sends data specific to the given protocol.
+  void postMessage([data]);
+
+  /// Terminates the given protocol.
+  void terminate();
+}
 
 // ============================================================================
 // [About Use Case Types] =====================================================
 // ============================================================================
-
-/// Identifies the current version of this module.
-String _moduleVersion = "0.2.0 (Last Modified 2023-12-24)";
 
 /// Assists get determining the operating system the progressive web
 /// application is running.
@@ -127,6 +244,149 @@ class CLogRecord {
 typedef CLoggerHandler = void Function(CLogRecord);
 
 // ============================================================================
+// [Network Use Case Types] ===================================================
+// ============================================================================
+
+/// Sets up a broadcast channel to allow different web pages to communicate
+/// with one an other.
+///
+/// https://developer.mozilla.org/en-US/docs/Web/API/Broadcast_Channel_API
+class _CBroadcastChannel extends _CProtocol {
+  // Member Fields:
+  late html.BroadcastChannel _channel;
+
+  _CBroadcastChannel(int id, CProtocolHandler handler, String url)
+      : super(id, "broadcast_channel", handler) {
+    // Create the channel
+    _channel = html.BroadcastChannel(url);
+
+    // Listen for events.
+    _channel.addEventListener("message", (e) {
+      final data = (e as html.MessageEvent).data;
+      handler(CProtocolEvent(data: data));
+    });
+    _channel.addEventListener("messageerror", (e) {
+      handler(CProtocolEvent(error: e.toString(), st: StackTrace.current));
+      codemelted.logger(
+        action: "log_error",
+        data: e.toString(),
+        st: StackTrace.current,
+      );
+    });
+  }
+
+  @override
+  void postMessage([data]) {
+    try {
+      _channel.postMessage(data);
+    } catch (ex, st) {
+      handler(CProtocolEvent(error: ex.toString(), st: st));
+      codemelted.logger(action: "log_debug", data: ex, st: st);
+    }
+  }
+
+  @override
+  void terminate() {
+    try {
+      _channel.close();
+    } catch (ex, st) {
+      handler(CProtocolEvent(error: ex.toString(), st: st));
+      codemelted.logger(action: "log_debug", data: ex, st: st);
+    }
+  }
+}
+
+/// Sets up a network fetch to a REST API specified by the URL. This will then
+/// allow for delete, get, put, and post actions to be carried out with the
+/// REST API specified by the URL.
+class _CNetworkFetch extends _CProtocol {
+  // Member Fields:
+  final String url;
+
+  _CNetworkFetch(int id, CProtocolHandler handler, this.url)
+      : super(id, "network_fetch($url)", handler);
+
+  @override
+  void postMessage([data]) async {
+    try {
+      // Setup the given request
+      const duration = Duration(seconds: 10);
+      final action = (data as CObject)["action"].toString();
+      final headers = ((data)["headers"] as Map<String, String>?);
+      final body = ((data)["body"] as Object?);
+      http.Response resp;
+      var uri = Uri.parse(url);
+
+      // Determine the action we will be carrying out.
+      if (action == "get") {
+        resp = await http.get(uri).timeout(duration);
+      } else if (action == "delete") {
+        resp = await http
+            .delete(uri, headers: headers, body: body)
+            .timeout(duration);
+      } else if (action == "put") {
+        resp = await http
+            .put(
+              uri,
+              headers: headers,
+              body: body,
+            )
+            .timeout(duration);
+      } else if (action == "post") {
+        resp = await http
+            .post(uri, headers: headers, body: body)
+            .timeout(duration);
+      } else {
+        throw "codemelted.network: $action is not supported with fetch "
+            "protocol";
+      }
+
+      // Now form the received data and report it.
+      final status = resp.statusCode;
+      final statusText = resp.reasonPhrase ?? "";
+      dynamic responseData;
+      String contentType = resp.headers["content-type"].toString();
+      if (contentType.containsIgnoreCase('plain/text') ||
+          contentType.containsIgnoreCase('text/html')) {
+        responseData = resp.body;
+      } else if (contentType.containsIgnoreCase('application/json')) {
+        responseData = jsonDecode(resp.body);
+      } else if (contentType.containsIgnoreCase('application/octet-stream')) {
+        responseData = resp.bodyBytes;
+      }
+
+      handler(CProtocolEvent(data: {
+        "data": responseData,
+        "status": status,
+        "statusText": statusText,
+      }));
+    } on TimeoutException {
+      handler(CProtocolEvent(status: "Request Timeout"));
+    } catch (ex, st) {
+      handler(CProtocolEvent(error: ex.toString(), st: st));
+      codemelted.logger(action: "log_debug", data: ex, st: st);
+    }
+  }
+
+  @override
+  void terminate() {
+    // Does nothing
+  }
+}
+
+// class _CClientWebSocket extends _CProtocol {
+//   @override
+//   void postMessage([data]) {
+//     // TODO: implement postMessage
+//   }
+
+//   @override
+//   void terminate() {
+//     // TODO: implement terminate
+//   }
+// }
+
+// ============================================================================
 // [Public API] ===============================================================
 // ============================================================================
 
@@ -138,6 +398,8 @@ class CodeMeltedAPI {
   String? _error;
   final Logger _logger = Logger("codemelted-logger");
   CLoggerHandler? _onLoggedEvent;
+  int _protoId = 0;
+  final _protoMap = <int, _CProtocol>{};
 
   /// Private constructor to form a namespace.
   CodeMeltedAPI._() {
@@ -187,18 +449,18 @@ class CodeMeltedAPI {
   }
 
   /// Determines information about the browser / operating system you are
-  /// running. The supported queryable actions include "argument", "browser",
+  /// running. The supported queries include "argument", "browser",
   /// "eol", "is_desktop", "is_mobile", "module_version", "os", and
   /// "processors". The data types returned are either string, bool, or number
   /// types depending on the actionable query. Null is returned if an error
   /// occurs with the request.
-  dynamic about({required String action, String? name}) {
+  dynamic about({required String query, String? name}) {
     try {
       _error = null;
-      if (action == "argument") {
+      if (query == "argument") {
         final urlParams = html.UrlSearchParams();
         return urlParams.get(name!);
-      } else if (action == "browser") {
+      } else if (query == "browser") {
         final userAgent = html.window.navigator.userAgent.toLowerCase();
         return userAgent.contains("firefox/")
             ? "firefox"
@@ -212,23 +474,23 @@ class CodeMeltedAPI {
                         : userAgent.contains("chrome/")
                             ? "chrome"
                             : "other";
-      } else if (action == "eol") {
+      } else if (query == "eol") {
         final osName = _getOSName();
         return osName == "windows" ? "\r\n" : "\n";
-      } else if (action == "is_desktop") {
+      } else if (query == "is_desktop") {
         final osName = _getOSName();
         return !osName.contains("android") && !osName.contains("ios");
-      } else if (action == "is_mobile") {
+      } else if (query == "is_mobile") {
         final osName = _getOSName();
         return osName.contains("android") || osName.contains("ios");
-      } else if (action == "module_version") {
+      } else if (query == "module_version") {
         return _moduleVersion;
-      } else if (action == "os") {
+      } else if (query == "os") {
         return _getOSName();
-      } else if (action == "processors") {
+      } else if (query == "processors") {
         return html.window.navigator.hardwareConcurrency!;
       } else {
-        throw "codemelted.about: unsupported $action specified.";
+        throw "codemelted.about: unsupported $query specified.";
       }
     } catch (err, st) {
       _error = err.toString();
@@ -307,9 +569,43 @@ class CodeMeltedAPI {
     return [0.0];
   }
 
-  /// @nodoc
-  int network() {
-    return -1;
+  /// Creates the supported client side network based protocols available in a
+  /// web browser environment. The supported protocol actions are
+  /// "create_broadcast_channel", "create_network_fetch", and
+  /// "create_client_web_socket". The url parameter specifies where to make a
+  /// connection for the fetch / web socket. For the broadcast channel it
+  /// represents the name all web pages will use on that channel. The other
+  /// supported actions are "post" and "terminate" for transmitting data and
+  /// terminating the protocol.
+  int network({
+    required String action,
+    required CProtocolHandler handler,
+    String? url,
+    dynamic data,
+    int? protoId,
+  }) {
+    try {
+      if (action == "create_broadcast_channel") {
+        _protoId += 1;
+        _protoMap[_protoId] = _CBroadcastChannel(_protoId, handler, url!);
+      } else if (action == "create_network_fetch") {
+        _protoId += 1;
+        _protoMap[_protoId] = _CNetworkFetch(_protoId, handler, url!);
+      } else if (action == "post") {
+        _protoMap[protoId!]!.postMessage(data);
+      } else if (action == "terminate") {
+        _protoMap[protoId!]!.terminate();
+        _protoMap.remove(protoId);
+      } else {
+        throw "codemelted.network: unsupported action '$action' specified.";
+      }
+    } catch (ex, st) {
+      _protoId -= 1;
+      logger(action: "log_error", data: ex, st: st);
+      return -1;
+    }
+
+    return _protoId;
   }
 
   /// @nodoc
