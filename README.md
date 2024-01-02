@@ -24,8 +24,6 @@ Welcome to the **CodeMelted Web Module** project. This project aims to provide a
 
 - [Getting started](#getting-started)
 - [Usage](#usage)
-  - [Error](#error)
-  - [Logger](#logger)
 - [Other Information](#other-information)
   - [Test Results](#test-results)
   - [Change Log](#change-log)
@@ -39,46 +37,7 @@ TBD
 
 The following are examples of how this module implements the **CodeMelted Developer** use cases.
 
-### Error
-
-Provides the ability to check on the last use cases execution and gather any errors associated with it.
-
-```dart
-// The following demonstrates checking if a use case successfully
-// execute. NOTE: this only makes sense for void use case functions.
-// Other functions will have a return type that will indicate an error.
-if (codemelted.error() != null) {
-  // Use case successfully executed.
-}
-```
-
-### Logger
-
-Provides the logger ability with the module.
-
-```dart
-// To set the log_level. Valid data parameter values are
-// "debug", "info", "warning", "error", and "off"
-codemelted.logger(
-  action: "log_level",
-  data: "warning",
-);
-
-// To set the log_handler. To unassign it, set null for data.
-codemelted.logger(
-  action: "log_handler",
-  data: (record) {
-    // Do something with the log record
-  },
-);
-
-// Now to do actual logging
-codemelted.logger(
-  action: "log_error",
-  data: "Something really bad happened here!",
-  st: StackTrace.current,
-);
-```
+TBD
 
 ## Other Information
 
@@ -88,11 +47,7 @@ codemelted.logger(
 
 ### Change Log
 
-**0.2.0 (Last Modified 2023-12-24):**
-
-- Implemented the logger and error use cases.
-- Fleshed out testing with browser in flutter. No coverage file. Sad.
-- While these are tested, not "releasing" via Getting Started just yet. Want to flesh out more of the module first.
+TBD
 
 ### License
 

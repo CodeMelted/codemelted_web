@@ -38,71 +38,71 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  group("codemelted.logger() Tests", () {
-    test("codemelted.logger() Error Demo", () {
-      expect(codemelted.error(), isNull);
-      codemelted.logger(action: "duh", data: "duh");
-      expect(codemelted.error(), isNotNull);
-    });
+  // group("codemelted.logger() Tests", () {
+  //   test("codemelted.logger() Error Demo", () {
+  //     expect(codemelted.error(), isNull);
+  //     codemelted.logger(action: "duh", data: "duh");
+  //     expect(codemelted.error(), isNotNull);
+  //   });
 
-    test("codemelted.logger() Success Demo", () {
-      // Setup our log handler
-      var count = 0;
-      logHandler(rec) {
-        count += 1;
-      }
+  //   test("codemelted.logger() Success Demo", () {
+  //     // Setup our log handler
+  //     var count = 0;
+  //     logHandler(rec) {
+  //       count += 1;
+  //     }
 
-      // Setup to log some events
-      expect(codemelted.error(), isNull);
-      codemelted.logger(action: "log_level", data: "warning");
-      codemelted.logger(action: "log_handler", data: logHandler);
-      codemelted.logger(
-        action: "log_debug",
-        data: "debug",
-        st: StackTrace.current,
-      );
-      codemelted.logger(
-        action: "log_info",
-        data: "info",
-        st: StackTrace.current,
-      );
-      codemelted.logger(
-        action: "log_warning",
-        data: "warning",
-        st: StackTrace.current,
-      );
-      codemelted.logger(
-        action: "log_error",
-        data: "error",
-        st: StackTrace.current,
-      );
-      expect(count, 2);
-      expect(codemelted.error(), isNull);
+  //     // Setup to log some events
+  //     expect(codemelted.error(), isNull);
+  //     codemelted.logger(action: "log_level", data: "warning");
+  //     codemelted.logger(action: "log_handler", data: logHandler);
+  //     codemelted.logger(
+  //       action: "log_debug",
+  //       data: "debug",
+  //       st: StackTrace.current,
+  //     );
+  //     codemelted.logger(
+  //       action: "log_info",
+  //       data: "info",
+  //       st: StackTrace.current,
+  //     );
+  //     codemelted.logger(
+  //       action: "log_warning",
+  //       data: "warning",
+  //       st: StackTrace.current,
+  //     );
+  //     codemelted.logger(
+  //       action: "log_error",
+  //       data: "error",
+  //       st: StackTrace.current,
+  //     );
+  //     expect(count, 2);
+  //     expect(codemelted.error(), isNull);
 
-      // Now setup to log all events
-      codemelted.logger(action: "log_level", data: "debug");
-      codemelted.logger(
-        action: "log_debug",
-        data: "debug",
-        st: StackTrace.current,
-      );
-      codemelted.logger(
-        action: "log_info",
-        data: "info",
-        st: StackTrace.current,
-      );
-      codemelted.logger(
-        action: "log_warning",
-        data: "warning",
-        st: StackTrace.current,
-      );
-      codemelted.logger(
-        action: "log_error",
-        data: "error",
-        st: StackTrace.current,
-      );
-      expect(count, 6);
-      expect(codemelted.error(), isNull);
-    });
-  });
+  //     // Now setup to log all events
+  //     codemelted.logger(action: "log_level", data: "debug");
+  //     codemelted.logger(
+  //       action: "log_debug",
+  //       data: "debug",
+  //       st: StackTrace.current,
+  //     );
+  //     codemelted.logger(
+  //       action: "log_info",
+  //       data: "info",
+  //       st: StackTrace.current,
+  //     );
+  //     codemelted.logger(
+  //       action: "log_warning",
+  //       data: "warning",
+  //       st: StackTrace.current,
+  //     );
+  //     codemelted.logger(
+  //       action: "log_error",
+  //       data: "error",
+  //       st: StackTrace.current,
+  //     );
+  //     expect(count, 6);
+  //     expect(codemelted.error(), isNull);
+  //   });
+  // });
 }

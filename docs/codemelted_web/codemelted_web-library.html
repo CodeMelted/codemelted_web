@@ -62,7 +62,9 @@
 
     
 <section class="desc markdown">
-  <p>The implementation of the codemelted_web module project.</p>
+  <p>The implementation of the codemelted_web module project. It exports the
+four core modules that implement the brains of the codemelted module
+design.</p>
 </section>
 
 
@@ -70,23 +72,132 @@
       <h2>Classes</h2>
 
       <dl>
-        <dt id="CLogRecord">
-  <span class="name "><a href="../codemelted_web/CLogRecord-class.html">CLogRecord</a></span> 
+        <dt id="CAboutData">
+  <span class="name "><a href="../codemelted_core/CAboutData-class.html">CAboutData</a></span> 
 
 </dt>
 <dd>
-  Wrapper object to provide a consistent log record object between module
-sdks.
+  Data object to capture information about the platform your pwa is running.
+Supports the <a href="../codemelted_core/CodeMeltedCore/about.html">CodeMeltedCore.about</a> property.
 </dd>
 
-        <dt id="CodeMeltedAPI">
-  <span class="name "><a href="../codemelted_web/CodeMeltedAPI-class.html">CodeMeltedAPI</a></span> 
+        <dt id="CActionItem">
+  <span class="name "><a href="../codemelted_ui/CActionItem-class.html">CActionItem</a></span> 
 
 </dt>
 <dd>
-  The main API for the codemelted_web library. It implements the use cases as
-identified by the <a href="https://developer.codemelted.com">https://developer.codemelted.com</a> identifies applicable to
-this module.
+  Data items supporting the construction of different action event based
+widgets providing information necessary to create the underlying widget.
+</dd>
+
+        <dt id="CAppController">
+  <span class="name "><a href="../codemelted_ui/CAppController-class.html">CAppController</a></span> 
+
+</dt>
+<dd>
+  Provides the control of the <a href="../codemelted_ui/CAppView-class.html">CAppView</a> state for switching widget content,
+displaying dialogs, and changing the overall look of the application.
+</dd>
+
+        <dt id="CAppView">
+  <span class="name "><a href="../codemelted_ui/CAppView-class.html">CAppView</a></span> 
+
+</dt>
+<dd>
+  This represents the main view for an entire Progressive Web Application.
+This in combination with the <a href="../codemelted_ui/CAppController-class.html">CAppController</a> provide all the tools
+necessary to quickly construct and control the PWA as a Single Page
+Application.
+</dd>
+
+        <dt id="CHeaderTitleItem">
+  <span class="name "><a href="../codemelted_ui/CHeaderTitleItem-class.html">CHeaderTitleItem</a></span> 
+
+</dt>
+<dd>
+  Provides the title for the header of the <a href="../codemelted_ui/CAppView-class.html">CAppView</a> widget.
+</dd>
+
+        <dt id="CLogRecord">
+  <span class="name "><a href="../codemelted_core/CLogRecord-class.html">CLogRecord</a></span> 
+
+</dt>
+<dd>
+  Support object for the <a href="../codemelted_core/CLogHandler.html">CLogHandler</a> to allow for additional processing
+after the initial logging occurs by the module.
+</dd>
+
+        <dt id="CodeMeltedCore">
+  <span class="name "><a href="../codemelted_core/CodeMeltedCore-class.html">CodeMeltedCore</a></span> 
+
+</dt>
+<dd>
+  Wrapper API for the <a href="../codemelted_core/codemelted_core.html">codemelted_core</a> library.
+</dd>
+
+        <dt id="CodeMeltedMath">
+  <span class="name "><a href="../codemelted_math/CodeMeltedMath-class.html">CodeMeltedMath</a></span> 
+
+</dt>
+<dd>
+  Wrapper API for the <a href="../codemelted_math/codemelted_math.html">codemelted_math</a> library.
+</dd>
+
+        <dt id="CodeMeltedProtocol">
+  <span class="name "><a href="../codemelted_protocol/CodeMeltedProtocol-class.html">CodeMeltedProtocol</a></span> 
+
+</dt>
+<dd>
+  Wrapper API for the <a href="../codemelted_protocol/codemelted_protocol.html">codemelted_protocol</a> library.
+</dd>
+
+        <dt id="CodeMeltedUI">
+  <span class="name "><a href="../codemelted_ui/CodeMeltedUI-class.html">CodeMeltedUI</a></span> 
+
+</dt>
+<dd>
+  Wrapper API for the <a href="../codemelted_ui/codemelted_ui.html">codemelted_ui</a> library.
+</dd>
+
+        <dt id="CProtocol">
+  <span class="name "><a href="../codemelted_protocol/CProtocol-class.html">CProtocol</a></span> 
+
+</dt>
+<dd>
+  Base class for a constructed protocol.
+</dd>
+
+        <dt id="CProtocolEvent">
+  <span class="name "><a href="../codemelted_protocol/CProtocolEvent-class.html">CProtocolEvent</a></span> 
+
+</dt>
+<dd>
+  Supports the <a href="../codemelted_protocol/CProtocolHandler.html">CProtocolHandler</a> object to report data, status, and errors
+with a constructed protocol via <a href="../codemelted_protocol/CodeMeltedProtocol-class.html">CodeMeltedProtocol</a> API.
+</dd>
+
+        <dt id="CTab">
+  <span class="name "><a href="../codemelted_ui/CTab-class.html">CTab</a></span> 
+
+</dt>
+<dd>
+  
+</dd>
+
+        <dt id="CTabbedView">
+  <span class="name "><a href="../codemelted_ui/CTabbedView-class.html">CTabbedView</a></span> 
+
+</dt>
+<dd>
+  
+</dd>
+
+        <dt id="CWebView">
+  <span class="name "><a href="../codemelted_ui/CWebView-class.html">CWebView</a></span> 
+
+</dt>
+<dd>
+  Provides a web view (a.k.a iframe) for the PWA.
 </dd>
 
       </dl>
@@ -99,13 +210,47 @@ this module.
       <h2>Properties</h2>
 
       <dl class="properties">
-        <dt id="codemelted" class="property">
-  <span class="name"><a href="../codemelted_web/codemelted.html">codemelted</a></span>
-  <span class="signature">&#8594; <a href="../codemelted_web/CodeMeltedAPI-class.html">CodeMeltedAPI</a></span> 
+        <dt id="codemelted_core" class="property">
+  <span class="name"><a href="../codemelted_core/codemelted_core.html">codemelted_core</a></span>
+  <span class="signature">&#8594; <a href="../codemelted_core/CodeMeltedCore-class.html">CodeMeltedCore</a></span> 
 
 </dt>
 <dd>
-  Entry point to access the <a href="../codemelted_web/CodeMeltedAPI-class.html">CodeMeltedAPI</a> as a namespaced utility object.
+  Accesses the <a href="../codemelted_core/CodeMeltedCore-class.html">CodeMeltedCore</a> API to access queryable actions within your
+application.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="codemelted_math" class="property">
+  <span class="name"><a href="../codemelted_math/codemelted_math.html">codemelted_math</a></span>
+  <span class="signature">&#8594; <a href="../codemelted_math/CodeMeltedMath-class.html">CodeMeltedMath</a></span> 
+
+</dt>
+<dd>
+  Accesses the <a href="../codemelted_math/CodeMeltedMath-class.html">CodeMeltedMath</a> API to solve complex math formulas.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="codemelted_protocol" class="property">
+  <span class="name"><a href="../codemelted_protocol/codemelted_protocol.html">codemelted_protocol</a></span>
+  <span class="signature">&#8594; <a href="../codemelted_protocol/CodeMeltedProtocol-class.html">CodeMeltedProtocol</a></span> 
+
+</dt>
+<dd>
+  Accesses the <a href="../codemelted_protocol/CodeMeltedProtocol-class.html">CodeMeltedProtocol</a> API to carry out complex protocols.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="codemelted_ui" class="property">
+  <span class="name"><a href="../codemelted_ui/codemelted_ui.html">codemelted_ui</a></span>
+  <span class="signature">&#8594; <a href="../codemelted_ui/CodeMeltedUI-class.html">CodeMeltedUI</a></span> 
+
+</dt>
+<dd>
+  Accesses the <a href="../codemelted_ui/CodeMeltedUI-class.html">CodeMeltedUI</a> API to build user interfaces in flutter.
   <div class="features"><span class="feature">final</span></div>
 
 </dd>
@@ -118,13 +263,21 @@ this module.
       <h2>Enums</h2>
 
       <dl>
-        <dt id="CLogLevel">
-  <span class="name "><a href="../codemelted_web/CLogLevel.html">CLogLevel</a></span> 
+        <dt id="CAppActionTrigger">
+  <span class="name "><a href="../codemelted_ui/CAppActionTrigger.html">CAppActionTrigger</a></span> 
 
 </dt>
 <dd>
-  Identifies the logging level to set with the <a href="../codemelted_web/CodeMeltedAPI/logger.html">CodeMeltedAPI.logger</a>
-"level" action.
+  Identifies which <a href="../codemelted_ui/CAppView-class.html">CAppView</a> widget triggered an action via the
+<a href="../codemelted_ui/CAppActionTriggeredCB.html">CAppActionTriggeredCB</a> callback.
+</dd>
+
+        <dt id="CLogLevel">
+  <span class="name "><a href="../codemelted_core/CLogLevel.html">CLogLevel</a></span> 
+
+</dt>
+<dd>
+  Identifies the log level of an event encountered by the module.
 </dd>
 
       </dl>
@@ -135,9 +288,41 @@ this module.
 
       <dl>
           
-  <dt id="CLoggerHandler" class="callable">
-    <span class="name"><a href="../codemelted_web/CLoggerHandler.html">CLoggerHandler</a></span><span class="signature">
-      <span class="returntype parameter">= void Function<span class="signature">(<span class="parameter" id="param-"><span class="type-annotation"><a href="../codemelted_web/CLogRecord-class.html">CLogRecord</a></span></span>)</span></span>
+  <dt id="CAppActionTriggeredCB" class="callable">
+    <span class="name"><a href="../codemelted_ui/CAppActionTriggeredCB.html">CAppActionTriggeredCB</a></span><span class="signature">
+      <span class="returntype parameter">= void Function<span class="signature">(<span class="parameter" id="param-"><span class="type-annotation"><a href="../codemelted_ui/CAppActionTrigger.html">CAppActionTrigger</a></span>, </span><span class="parameter" id="param-"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span></span>)</span></span>
+    </span>
+    
+
+  </dt>
+  <dd>
+    Callback to support the <a href="../codemelted_ui/CAppView-class.html">CAppView</a> widget allowing for proper support of
+handling triggered actions from the <a href="../codemelted_ui/CAppActionTrigger.html">CAppActionTrigger</a> enumeration
+signaling which <a href="../codemelted_ui/CActionItem-class.html">CActionItem</a> was tapped or clicked identifiable by its
+title.
+    
+
+  </dd>
+
+          
+  <dt id="CArray" class="">
+  <span class="name"><a href="../codemelted_core/CArray.html">CArray</a></span>
+    = <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a>
+  </span>
+  
+
+</dt>
+<dd>
+  Defines an array definition to match JSON Array construct.
+  
+
+</dd>
+
+
+          
+  <dt id="CLogHandler" class="callable">
+    <span class="name"><a href="../codemelted_core/CLogHandler.html">CLogHandler</a></span><span class="signature">
+      <span class="returntype parameter">= void Function<span class="signature">(<span class="parameter" id="param-"><span class="type-annotation"><a href="../codemelted_core/CLogRecord-class.html">CLogRecord</a></span></span>)</span></span>
     </span>
     
 
@@ -145,6 +330,36 @@ this module.
   <dd>
     Provides the ability to perform additional processing on logged events
 handled by this module.
+    
+
+  </dd>
+
+          
+  <dt id="CObject" class="">
+  <span class="name"><a href="../codemelted_core/CObject.html">CObject</a></span>
+    = <a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Defines an object definition to match a valid JSON Object construct.
+  
+
+</dd>
+
+
+          
+  <dt id="CProtocolHandler" class="callable">
+    <span class="name"><a href="../codemelted_protocol/CProtocolHandler.html">CProtocolHandler</a></span><span class="signature">
+      <span class="returntype parameter">= void Function<span class="signature">(<span class="parameter" id="param-"><span class="type-annotation"><a href="../codemelted_protocol/CProtocolEvent-class.html">CProtocolEvent</a></span></span>)</span></span>
+    </span>
+    
+
+  </dt>
+  <dd>
+    Handler that is utilized with the <a href="../codemelted_protocol/CodeMeltedProtocol-class.html">CodeMeltedProtocol</a> when constructing a
+protocol to receive <a href="../codemelted_protocol/CProtocolEvent-class.html">CProtocolEvent</a> updates.
     
 
   </dd>
@@ -172,6 +387,10 @@ handled by this module.
     <h5><span class="package-name">codemelted_web</span> <span class="package-kind">package</span></h5>
     <ol>
       <li class="section-title">Libraries</li>
+      <li><a href="../codemelted_core/codemelted_core-library.html">codemelted_core</a></li>
+      <li><a href="../codemelted_math/codemelted_math-library.html">codemelted_math</a></li>
+      <li><a href="../codemelted_protocol/codemelted_protocol-library.html">codemelted_protocol</a></li>
+      <li><a href="../codemelted_ui/codemelted_ui-library.html">codemelted_ui</a></li>
       <li><a href="../codemelted_web/codemelted_web-library.html">codemelted_web</a></li>
 </ol>
 
