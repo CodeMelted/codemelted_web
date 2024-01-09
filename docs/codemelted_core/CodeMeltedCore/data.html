@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the about property from the CodeMeltedCore class, for the Dart programming language.">
-  <title>about property - CodeMeltedCore class - codemelted_core library - Dart API</title>
+  <meta name="description" content="API docs for the data method from the CodeMeltedCore class, for the Dart programming language.">
+  <title>data method - CodeMeltedCore class - codemelted_core library - Dart API</title>
 
 
   
@@ -31,9 +31,9 @@
     <li><a href="../../index.html">codemelted_web</a></li>
     <li><a href="../../codemelted_core/codemelted_core-library.html">codemelted_core</a></li>
     <li><a href="../../codemelted_core/CodeMeltedCore-class.html">CodeMeltedCore</a></li>
-    <li class="self-crumb">about property</li>
+    <li class="self-crumb">data method</li>
   </ol>
-  <div class="self-name">about</div>
+  <div class="self-name">data</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -57,32 +57,79 @@
       data-above-sidebar="codemelted_core&#47;CodeMeltedCore-class-sidebar.html"
       data-below-sidebar="">
       <div>
-<h1><span class="kind-property">about</span> property 
+<h1><span class="kind-method">data</span> method 
 </h1></div>
 
+    <section class="multi-line-signature">
+      
 
-        
-<section id="getter">
+<span class="returntype">dynamic</span>
+<span class="name ">data</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="data-param-action">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">action</span>, </span></li>
+<li><span class="parameter" id="data-param-data"><span>required</span> <span class="type-annotation">dynamic</span> <span class="parameter-name">data</span>, </span></li>
+<li><span class="parameter" id="data-param-key"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">key</span>}</span></li>
+</ol>)
 
-<section class="multi-line-signature">
-  
-  <span class="returntype"><a href="../../codemelted_core/CPlatformInfo-class.html">CPlatformInfo</a></span>
-  <span class="name ">about</span>
-  
+      
 
-</section>
-
-
+    </section>
+    
 <section class="desc markdown">
-  <p>Accesses information about the platform environment you are running.</p>
+  <p>Provides the ability to validate or convert data. The actions support
+are "has_property", "json_parse", "json_stringify", "is_array",
+"is_bool", "is_double", "is_int", "is_object", "is_string",
+"is_valid_url", "to_array", "to_bool", "to_double", "to_int",
+"to_object", and "to_string".</p>
+<p>The returned value will be a bool for has_ or is_ actions, the data type
+of the to_, or a string / <a href="../../codemelted_core/CObject.html">CObject</a> if a json serialization is being
+performed</p>
 </section>
 
 
+    
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">CPlatformInfo get about =&gt; _about;</code></pre>
-</section>
-
+  <pre class="language-dart"><code class="language-dart">dynamic data({required String action, required dynamic data, String? key}) {
+  try {
+    if (action == &quot;has_property&quot;) {
+      return (data as CObject).containsKey(key);
+    } else if (action == &quot;json_parse&quot;) {
+      return jsonDecode(data);
+    } else if (action == &quot;json_stringify&quot;) {
+      return jsonEncode(data);
+    } else if (action == &quot;is_array&quot;) {
+      return data is CArray;
+    } else if (action == &quot;is_bool&quot;) {
+      return data is bool;
+    } else if (action == &quot;is_double&quot;) {
+      return data is double;
+    } else if (action == &quot;is_int&quot;) {
+      return data is int;
+    } else if (action == &quot;is_object&quot;) {
+      return data is CObject;
+    } else if (action == &quot;isString&quot;) {
+      return data is String;
+    } else if (action == &quot;is_valid_url&quot;) {
+      return Uri.tryParse(data) != null;
+    } else if (action == &quot;to_array&quot;) {
+      return data.toString().asArray();
+    } else if (action == &quot;to_bool&quot;) {
+      data.toString().asBool();
+    } else if (action == &quot;to_double&quot;) {
+      return data.toString().asDouble();
+    } else if (action == &quot;to_int&quot;) {
+      return data.toString().asInt();
+    } else if (action == &quot;to_object&quot;) {
+      return data.toString().asObject();
+    } else if (action == &quot;to_string&quot;) {
+      return data.toString();
+    } else {
+      throw &quot;codemelted.data: unsupported action &#39;$action&#39; specified.&quot;;
+    }
+  } catch (ex, st) {
+    log(level: CLogLevel.error, data: ex.toString(), st: st);
+    return null;
+  }
+}</code></pre>
 </section>
 
 
@@ -100,7 +147,7 @@
     <li><a href="../../index.html">codemelted_web</a></li>
     <li><a href="../../codemelted_core/codemelted_core-library.html">codemelted_core</a></li>
     <li><a href="../../codemelted_core/CodeMeltedCore-class.html">CodeMeltedCore</a></li>
-    <li class="self-crumb">about property</li>
+    <li class="self-crumb">data method</li>
 </ol>
 
 

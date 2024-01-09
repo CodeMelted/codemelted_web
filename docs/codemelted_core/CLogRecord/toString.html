@@ -92,13 +92,12 @@ mainly for debugging or logging.</p>
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">CLogRecord(this.level, this.data, this.stackTrace);
-
-@override
+  <pre class="language-dart"><code class="language-dart">@override
 String toString() {
   var msg = &quot;${time.toIso8601String()} [$level]: $data&quot;;
   msg += stackTrace != null ? &quot;\n$stackTrace&quot; : &quot;&quot;;
-  return msg</code></pre>
+  return msg;
+}</code></pre>
 </section>
 
 

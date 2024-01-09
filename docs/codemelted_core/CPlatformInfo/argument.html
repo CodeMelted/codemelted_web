@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the isDesktop property from the CAboutData class, for the Dart programming language.">
-  <title>isDesktop property - CAboutData class - codemelted_core library - Dart API</title>
+  <meta name="description" content="API docs for the argument method from the CPlatformInfo class, for the Dart programming language.">
+  <title>argument method - CPlatformInfo class - codemelted_core library - Dart API</title>
 
 
   
@@ -30,10 +30,10 @@
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">codemelted_web</a></li>
     <li><a href="../../codemelted_core/codemelted_core-library.html">codemelted_core</a></li>
-    <li><a href="../../codemelted_core/CAboutData-class.html">CAboutData</a></li>
-    <li class="self-crumb">isDesktop property</li>
+    <li><a href="../../codemelted_core/CPlatformInfo-class.html">CPlatformInfo</a></li>
+    <li class="self-crumb">argument method</li>
   </ol>
-  <div class="self-name">isDesktop</div>
+  <div class="self-name">argument</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -54,38 +54,35 @@
   <div
       id="dartdoc-main-content"
       class="main-content"
-      data-above-sidebar="codemelted_core&#47;CAboutData-class-sidebar.html"
+      data-above-sidebar="codemelted_core&#47;CPlatformInfo-class-sidebar.html"
       data-below-sidebar="">
       <div>
-<h1><span class="kind-property">isDesktop</span> property 
+<h1><span class="kind-method">argument</span> method 
 </h1></div>
 
+    <section class="multi-line-signature">
+      
 
-        
-<section id="getter">
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>
+<span class="name ">argument</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="argument-param-name"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span></span></li>
+</ol>)
 
-<section class="multi-line-signature">
-  
-  <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
-  <span class="name ">isDesktop</span>
-  
+      
 
-</section>
-
-
+    </section>
+    
 <section class="desc markdown">
-  <p>Determines if your app is running on a desktop or not.</p>
+  <p>Will search for passed items to the progressive web application
+via the url.</p>
 </section>
 
 
+    
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">String get eol =&gt; _data[&quot;eol&quot;].toString();
-
-&#47;&#47;&#47; Determines if your app is running on a desktop or not.
-bool get isDesktop =&gt; _data[&quot;is_desktop&quot;] as</code></pre>
-</section>
-
+  <pre class="language-dart"><code class="language-dart">String? argument(String name) {
+  return (_data[&quot;argument&quot;] as html.UrlSearchParams).get(name);
+}</code></pre>
 </section>
 
 
@@ -102,12 +99,12 @@ bool get isDesktop =&gt; _data[&quot;is_desktop&quot;] as</code></pre>
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
     <li><a href="../../index.html">codemelted_web</a></li>
     <li><a href="../../codemelted_core/codemelted_core-library.html">codemelted_core</a></li>
-    <li><a href="../../codemelted_core/CAboutData-class.html">CAboutData</a></li>
-    <li class="self-crumb">isDesktop property</li>
+    <li><a href="../../codemelted_core/CPlatformInfo-class.html">CPlatformInfo</a></li>
+    <li class="self-crumb">argument method</li>
 </ol>
 
 
-    <h5>CAboutData class</h5>
+    <h5>CPlatformInfo class</h5>
   </div><!--/.sidebar-offcanvas-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">

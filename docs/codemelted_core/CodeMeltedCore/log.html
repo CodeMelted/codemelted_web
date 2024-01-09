@@ -64,9 +64,9 @@
       
 
 <span class="returntype">void</span>
-<span class="name ">log</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="log-param-level"><span class="type-annotation"><a href="../../codemelted_core/CLogLevel.html">CLogLevel</a></span> <span class="parameter-name">level</span>, </span></li>
-<li><span class="parameter" id="log-param-data"><span class="type-annotation">dynamic</span> <span class="parameter-name">data</span>, </span></li>
-<li><span class="parameter" id="log-param-st"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/StackTrace-class.html">StackTrace</a>?</span> <span class="parameter-name">st</span></span></li>
+<span class="name ">log</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="log-param-level">{<span>required</span> <span class="type-annotation"><a href="../../codemelted_core/CLogLevel.html">CLogLevel</a></span> <span class="parameter-name">level</span>, </span></li>
+<li><span class="parameter" id="log-param-data"><span>required</span> <span class="type-annotation">dynamic</span> <span class="parameter-name">data</span>, </span></li>
+<li><span class="parameter" id="log-param-st"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/StackTrace-class.html">StackTrace</a>?</span> <span class="parameter-name">st</span>}</span></li>
 </ol>)
 
       
@@ -82,11 +82,11 @@ and tracking of events.</p>
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">CLogHandler? onLoggedEvent;
-
-&#47;&#47;&#47; Logs events via the module to allow for further development of an
-&#47;&#47;&#47; and tracking of events.
-void log(CLogLevel level, dynamic data, StackTrace? st) {
+  <pre class="language-dart"><code class="language-dart">void log({
+  required CLogLevel level,
+  required dynamic data,
+  StackTrace? st,
+}) {
   &#47;&#47; See if we meet the logging conditions
   if (logLevel == CLogLevel.off || level.index &lt; logLevel.index) {
     return;
@@ -118,7 +118,9 @@ void log(CLogLevel level, dynamic data, StackTrace? st) {
 
   &#47;&#47; Now send off for later processing if a handler exists.
   if (onLoggedEvent != null) {
-    onLoggedEvent!(record);</code></pre>
+    onLoggedEvent!(record);
+  }
+}</code></pre>
 </section>
 
 

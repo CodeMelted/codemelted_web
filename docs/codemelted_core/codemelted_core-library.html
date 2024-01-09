@@ -71,15 +71,6 @@ return an immediate answer to the request.</p>
       <h2>Classes</h2>
 
       <dl>
-        <dt id="CAboutData">
-  <span class="name "><a href="../codemelted_core/CAboutData-class.html">CAboutData</a></span> 
-
-</dt>
-<dd>
-  Data object to capture information about the platform your pwa is running.
-Supports the <a href="../codemelted_core/CodeMeltedCore/about.html">CodeMeltedCore.about</a> property.
-</dd>
-
         <dt id="CLogRecord">
   <span class="name "><a href="../codemelted_core/CLogRecord-class.html">CLogRecord</a></span> 
 
@@ -95,6 +86,15 @@ after the initial logging occurs by the module.
 </dt>
 <dd>
   Wrapper API for the <a href="../codemelted_core/codemelted_core.html">codemelted_core</a> library.
+</dd>
+
+        <dt id="CPlatformInfo">
+  <span class="name "><a href="../codemelted_core/CPlatformInfo-class.html">CPlatformInfo</a></span> 
+
+</dt>
+<dd>
+  Data object to capture information about the platform your pwa is running.
+Supports the <a href="../codemelted_core/CodeMeltedCore/about.html">CodeMeltedCore.about</a> property.
 </dd>
 
       </dl>
@@ -156,6 +156,21 @@ application.
 
 </dd>
 
+
+          
+  <dt id="CHtmlEventHandler" class="callable">
+    <span class="name"><a href="../codemelted_core/CHtmlEventHandler.html">CHtmlEventHandler</a></span><span class="signature">
+      <span class="returntype parameter">= dynamic Function<span class="signature">(<span class="parameter" id="param-"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-html/Event-class.html">Event</a></span></span>)</span></span>
+    </span>
+    
+
+  </dt>
+  <dd>
+    Event handler to support the <code>CodeMeltedCore.event</code> function for
+processing of browser based HTML events.
+    
+
+  </dd>
 
           
   <dt id="CLogHandler" class="callable">
